@@ -1,0 +1,29 @@
+version: 1.0
+environment:
+  variables: []
+
+build:
+  ios:
+    project: NowNoise.xcodeproj
+    scheme: NowNoise
+    configuration: Release
+    xcode_version: "14.0"
+    signing:
+      team_id: ${APPLE_TEAM_ID}
+      provisioning_profile: ${PROVISIONING_PROFILE}
+      certificate: ${CERTIFICATE}
+    build_settings:
+      DEVELOPMENT_TEAM: ${APPLE_TEAM_ID}
+      CODE_SIGN_STYLE: Manual
+      PROVISIONING_PROFILE_SPECIFIER: ${PROVISIONING_PROFILE}
+      CODE_SIGN_IDENTITY: ${CERTIFICATE}
+      PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}
+      ENABLE_BITCODE: NO
+      SWIFT_VERSION: 5.0
+      IPHONEOS_DEPLOYMENT_TARGET: 15.0
+
+artifacts:
+  - path: "build/Release-iphoneos/NowNoise.app"
+    type: ios_app
+  - path: "build/Release-iphoneos/NowNoise.app.dSYM"
+    type: dSYM 
